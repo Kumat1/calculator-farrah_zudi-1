@@ -194,6 +194,26 @@ class MyOperatorButton extends Button implements ActionListener
             return;
         }
         // process = button pressed
+         switch(cl.op)
+        {
+            case '+':
+                temp+=cl.number;break;
+            case '-':
+                temp=cl.number-temp;break;
+            case '*':
+                temp*=cl.number;break;
+            case '%':
+                try{temp=cl.number%temp;}
+                catch(ArithmeticException excp)
+                {cl.displayLabel.setText("Divide by 0."); return;}
+                break;
+            case '/':
+                try{temp=cl.number/temp;}
+                catch(ArithmeticException excp)
+                {cl.displayLabel.setText("Divide by 0."); return;}
+                break;
+        }
+
 
 
         cl.displayLabel.setText(MyCalculator.getFormattedText(temp));
